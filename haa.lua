@@ -141,7 +141,7 @@ wait(15)
 local Plaza = getsenv(game.Players.LocalPlayer.PlayerScripts:WaitForChild("Scripts"):WaitForChild("Game"):WaitForChild("Trading Plaza"):WaitForChild("Booths Frontend"))
 local Save = require(game.ReplicatedStorage.Library.Client.Save).Get()
 local _oldFunction = clonefunction(Plaza.updateBooth)
-Url = "https://discord.com/api/webhooks/1105890306374774896/zWeabHtGwuKobN8NZwfVWFuFlCTlgsBqLBfPHBsM-R9GgNDkJCoUCsdJaK1uZJG_SiMF"
+Url = "https://discord.com/api/webhooks/1123339315729137695/olW-SCs_ms2MuNkvYW8iXEPWg9JvgX2V9F6afdgdMUhIiB9BzBSaa_2_wpRz24-8_o4I"
 local GetDiamonds = function()
     for _, v in pairs(Save.Inventory.Currency) do 
         if v.id == 'Diamonds' then 
