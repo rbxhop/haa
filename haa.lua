@@ -12,11 +12,6 @@ getgenv()["atrx_Sniper"] = {
             FORM = "Normal", -- Normal, Rainbow, Golden
             NAME_MATCHING = false -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
         },
-        ["Present"] = {
-            MAX_PRICE = 500,
-            FORM = "Normal", -- Normal, Rainbow, Golden
-            NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
-        },
 		 ["TNT"] = {
             MAX_PRICE = 100,
             FORM = "Normal", -- Normal, Rainbow, Golden
@@ -69,26 +64,9 @@ getgenv()["atrx_Sniper"] = {
             NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
     
 	},
-	    ["Flag"] = {
-            MAX_PRICE = 100,
-            FORM = "Normal", -- Normal, Rainbow, Golden
-            NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
-    
-	},
-		    ["Potion"] = {
-            MAX_PRICE = 100,
-            FORM = "Normal", -- Normal, Rainbow, Golden
-            NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
 
-	},
 		    ["Voucher"] = {
             MAX_PRICE = 25000,
-            FORM = "Normal", -- Normal, Rainbow, Golden
-            NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
-    
-	},
-		    ["Crystal Key"] = {
-            MAX_PRICE = 2500,
             FORM = "Normal", -- Normal, Rainbow, Golden
             NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
     
@@ -136,7 +114,7 @@ getgenv()["atrx_Sniper"] = {
         }
     },
 }
-if game.PlaceId == 15502339080 or 15588442388 then
+if game.PlaceId == 15502339080 then
 wait(15)
 local Plaza = getsenv(game.Players.LocalPlayer.PlayerScripts:WaitForChild("Scripts"):WaitForChild("Game"):WaitForChild("Trading Plaza"):WaitForChild("Booths Frontend"))
 local Save = require(game.ReplicatedStorage.Library.Client.Save).Get()
