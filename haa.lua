@@ -134,7 +134,7 @@ local Notify = function(PET_DATA)
         ["content"] = atrx_Sniper.Configuration.Webhook.Content,
         ["embeds"] = {
             {
-                ["title"] = string.format("Bought %s for %s Gem", PET_DATA.COUNT, PET_DATA.NAME, PET_DATA.PRICE, (math.round((PET_DATA.MAX_PRICE / PET_DATA.PRICE) * 100).."%")),
+                ["title"] = string.format("Bought %s for %s - %s Gem", PET_DATA.COUNT, PET_DATA.NAME, PET_DATA.PRICE, (math.round((PET_DATA.MAX_PRICE / PET_DATA.PRICE) * 100).."%")),
                 ["description"] = string.format("**> Transaction Details <**\n**Pet Name: %s**\n**Bought by: %s (%s)**\n**Bought from %s (%s)**\n**>Total <**\n**Price: %s**\n**Max Price: %s**\n**Profit (percent): %s**\n**Gem Balance: %s**", PET_DATA.NAME, game.Players.LocalPlayer.Name, game.Players.LocalPlayer.UserId, game.Players:GetPlayerByUserId(PET_DATA.PLAYER_ID).Name, PET_DATA.PLAYER_ID, PET_DATA.PRICE, PET_DATA.MAX_PRICE, (math.round((PET_DATA.MAX_PRICE / PET_DATA.PRICE) * 100).."%"), GetDiamonds()) ,
                 ["color"] = 3929344,
                 ["author"] = {
