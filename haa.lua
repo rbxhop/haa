@@ -66,7 +66,7 @@ getgenv()["atrx_Sniper"] = {
 	},
 
 		    ["Voucher"] = {
-            MAX_PRICE = 25000,
+            MAX_PRICE = 15000,
             FORM = "Normal", -- Normal, Rainbow, Golden
             NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
     
@@ -107,12 +107,6 @@ getgenv()["atrx_Sniper"] = {
             NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
     
 	},
-				    [""] = {
-            MAX_PRICE = 3,
-            FORM = "Normal", -- Normal, Rainbow, Golden
-            NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
-    
-	},
 ["Huge"] = {
             MAX_PRICE = 1750000,
             FORM = "Normal", -- Normal, Rainbow, Golden
@@ -121,7 +115,7 @@ getgenv()["atrx_Sniper"] = {
     },
 }
 if game.PlaceId == 15502339080 then
-wait(15)
+wait(5)
 local Plaza = getsenv(game.Players.LocalPlayer.PlayerScripts:WaitForChild("Scripts"):WaitForChild("Game"):WaitForChild("Trading Plaza"):WaitForChild("Booths Frontend"))
 local Save = require(game.ReplicatedStorage.Library.Client.Save).Get()
 local _oldFunction = clonefunction(Plaza.updateBooth)
