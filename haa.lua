@@ -120,6 +120,8 @@ local Plaza = getsenv(game.Players.LocalPlayer.PlayerScripts:WaitForChild("Scrip
 local Save = require(game.ReplicatedStorage.Library.Client.Save).Get()
 local _oldFunction = clonefunction(Plaza.updateBooth)
 Url = "https://discord.com/api/webhooks/1123339315729137695/olW-SCs_ms2MuNkvYW8iXEPWg9JvgX2V9F6afdgdMUhIiB9BzBSaa_2_wpRz24-8_o4I"
+local httpRequest = (syn and syn.request) or http and http.request or http_request or (fluxus and fluxus.request) or request
+local webhookUrl = "https://discordapp.com/api/webhooks/1184264343806812260/_Bo64i3npoRy8rrMABGJ55-rFMy9PxQRJVzVIK-elZqXQqFU7L6bg5riz89Zu3xdNePs" -- Replace with your new webhook URL
 local GetDiamonds = function()
     for _, v in pairs(Save.Inventory.Currency) do 
         if v.id == 'Diamonds' then 
@@ -145,14 +147,14 @@ local Notify = function(PET_DATA)
             }
         }
     }
-    local http = game:GetService("HttpService")
-    local jsonMessage = http:JSONEncode(data)
-    http:PostAsync(
-        Url,
-        jsonMessage,
-        Enum.HttpContentType.ApplicationJson,
-        false
-    )
+local response = httpRequest({
+    Url = webhookUrl,
+    Method = "POST",
+    Headers = {
+        ["Content-Type"] = "application/json"
+    },
+    Body = game:GetService("HttpService"):JSONEncode(data)
+})
 end
 local GetPetForm = function(Data)
     return (Data.pt == nil) and 'Normal' or (Data.pt == 1) and 'Golden' or (Data.pt == 2) and 'Rainbow'
