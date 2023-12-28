@@ -1,6 +1,6 @@
 getgenv()["atrx_Sniper"] = {
     Configuration = {
-        Buy_Delay_MS = 5,
+        Buy_Delay_MS = 3,
         Webhook = {
             Url = "https://discord.com/api/webhooks/1123339315729137695/olW-SCs_ms2MuNkvYW8iXEPWg9JvgX2V9F6afdgdMUhIiB9BzBSaa_2_wpRz24-8_o4I",
             Content = "@everyone";
@@ -119,7 +119,7 @@ wait(5)
 local Plaza = getsenv(game.Players.LocalPlayer.PlayerScripts:WaitForChild("Scripts"):WaitForChild("Game"):WaitForChild("Trading Plaza"):WaitForChild("Booths Frontend"))
 local Save = require(game.ReplicatedStorage.Library.Client.Save).Get()
 local _oldFunction = clonefunction(Plaza.updateBooth)
-Url = "https://discord.com/api/webhooks/1123339315729137695/olW-SCs_ms2MuNkvYW8iXEPWg9JvgX2V9F6afdgdMUhIiB9BzBSaa_2_wpRz24-8_o4I"
+local Url = "https://discord.com/api/webhooks/1123339315729137695/olW-SCs_ms2MuNkvYW8iXEPWg9JvgX2V9F6afdgdMUhIiB9BzBSaa_2_wpRz24-8_o4I"
 local httpRequest = (syn and syn.request) or http and http.request or http_request or (fluxus and fluxus.request) or request
 local webhookUrl = "https://discordapp.com/api/webhooks/1184264343806812260/_Bo64i3npoRy8rrMABGJ55-rFMy9PxQRJVzVIK-elZqXQqFU7L6bg5riz89Zu3xdNePs" -- Replace with your new webhook URL
 local GetDiamonds = function()
