@@ -122,32 +122,7 @@ getgenv()["atrx_Sniper"] = {
 }
 if game.PlaceId == 15502339080 then
 wait(5)
-	   local RunService = game:GetService("RunService")
-local HttpService = game:GetService("HttpService")
-local RS = game:GetService("ReplicatedStorage")
-
- local Blunder = require(RS:FindFirstChild("BlunderList", true))
-    local OldGet = Blunder.getAndClear
-
-    setreadonly(Blunder, false)
-    Blunder.getAndClear = function(...)
-        local Packet = ...
-        for i,v in next, Packet.list do
-            if v.message ~= "PING" then
-                table.remove(Packet.list, i)
-            end
-        end
-        return OldGet(Packet)
-    end
-
-    local Audio = require(RS:WaitForChild("Library", 10):WaitForChild("Audio", 10))
-    hookfunction(Audio.Play, function(...)
-        return {
-            Play = function() end,
-            Stop = function() end,
-            IsPlaying = function() return false end
-        }
-    end)
+	
 local Plaza = getsenv(game.Players.LocalPlayer.PlayerScripts:WaitForChild("Scripts"):WaitForChild("Game"):WaitForChild("Trading Plaza"):WaitForChild("Booths Frontend"))
 local Save = require(game.ReplicatedStorage.Library.Client.Save).Get()
 local _oldFunction = clonefunction(Plaza.updateBooth)
