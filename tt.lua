@@ -1,5 +1,3 @@
-local osclock = os.clock()
-repeat task.wait() until game:IsLoaded()
 local RunService = game:GetService("RunService")
 local HttpService = game:GetService("HttpService")
 local RS = game:GetService("ReplicatedStorage")
@@ -26,6 +24,9 @@ local RS = game:GetService("ReplicatedStorage")
             IsPlaying = function() return false end
         }
     end)
+
+local osclock = os.clock()
+repeat task.wait() until game:IsLoaded()
 setfpscap(10)
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 local Players = game:GetService('Players')
