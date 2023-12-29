@@ -1,6 +1,6 @@
 getgenv()["atrx_Sniper"] = {
     Configuration = {
-        Buy_Delay_MS = 1,
+        Buy_Delay_MS = 3,
         Webhook = {
             Url = "https://discord.com/api/webhooks/1123339315729137695/olW-SCs_ms2MuNkvYW8iXEPWg9JvgX2V9F6afdgdMUhIiB9BzBSaa_2_wpRz24-8_o4I",
             Content = "@everyone";
@@ -41,7 +41,7 @@ getgenv()["atrx_Sniper"] = {
     
 	},
 			["Gift Bag"] = {
-            MAX_PRICE = 1000,
+            MAX_PRICE = 250,
             FORM = "Normal", -- Normal, Rainbow, Golden
             NAME_MATCHING = false -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
     
@@ -66,7 +66,7 @@ getgenv()["atrx_Sniper"] = {
 	},
 
 		    ["Voucher"] = {
-            MAX_PRICE = 15000,
+            MAX_PRICE = 30000,
             FORM = "Normal", -- Normal, Rainbow, Golden
             NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
     
@@ -84,7 +84,7 @@ getgenv()["atrx_Sniper"] = {
     
 	},
 		    ["Fortune"] = {
-            MAX_PRICE = 500000,
+            MAX_PRICE = 300000,
             FORM = "Normal", -- Normal, Rainbow, Golden
             NAME_MATCHING = false -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
     
@@ -102,13 +102,19 @@ getgenv()["atrx_Sniper"] = {
     
 	},
 		    ["Titanic"] = {
-            MAX_PRICE = 200000,
+            MAX_PRICE = 300000,
             FORM = "Normal", -- Normal, Rainbow, Golden
             NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
     
 	},
+				    ["Huge"] = {
+            MAX_PRICE = 3500000,
+            FORM = "Rainbow", -- Normal, Rainbow, Golden
+            NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
+    
+	},
 ["Huge"] = {
-            MAX_PRICE = 2550000,
+            MAX_PRICE = 2750000,
             FORM = "Normal", -- Normal, Rainbow, Golden
             NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
         }
