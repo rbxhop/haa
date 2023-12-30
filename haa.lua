@@ -102,7 +102,7 @@ getgenv()["atrx_Sniper"] = {
     
 	},
 		    ["Titanic"] = {
-            MAX_PRICE = 300000,
+            MAX_PRICE = 200000,
             FORM = "Normal", -- Normal, Rainbow, Golden
             NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
     
