@@ -1,22 +1,6 @@
-local Players = game:GetService('Players')
-local HttpService = game:GetService("HttpService")
-local TeleportService = game:GetService("TeleportService")
-local RunService = game:GetService("RunService")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-	local Audio = require(ReplicatedStorage:WaitForChild("Library", 10):WaitForChild("Audio", 10))
-    local FakeSound = Instance.new("Sound", Workspace)
-    FakeSound.Name = "Fake"
-
-    -- // Hook
-    hookfunction(Audio.Play, function(...)
-        return FakeSound
-    end)
-	print("Audio hocked")
-
-
 getgenv()["atrx_Sniper"] = {
     Configuration = {
-        Buy_Delay_MS = 3,
+        Buy_Delay_MS = 10,
         Webhook = {
             Url = "https://discord.com/api/webhooks/1123339315729137695/olW-SCs_ms2MuNkvYW8iXEPWg9JvgX2V9F6afdgdMUhIiB9BzBSaa_2_wpRz24-8_o4I",
             Content = "@everyone";
@@ -24,7 +8,7 @@ getgenv()["atrx_Sniper"] = {
     },
     Pets = {
         ["Coins"] = {
-            MAX_PRICE = 2000,
+            MAX_PRICE = 3000,
             FORM = "Normal", -- Normal, Rainbow, Golden
             NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
         }
