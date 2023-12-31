@@ -1,3 +1,19 @@
+local Players = game:GetService('Players')
+local HttpService = game:GetService("HttpService")
+local TeleportService = game:GetService("TeleportService")
+local RunService = game:GetService("RunService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+	local Audio = require(ReplicatedStorage:WaitForChild("Library", 10):WaitForChild("Audio", 10))
+    local FakeSound = Instance.new("Sound", Workspace)
+    FakeSound.Name = "Fake"
+
+    -- // Hook
+    hookfunction(Audio.Play, function(...)
+        return FakeSound
+    end)
+	print("Audio hocked")
+
+
 getgenv()["atrx_Sniper"] = {
     Configuration = {
         Buy_Delay_MS = 3,
@@ -7,10 +23,10 @@ getgenv()["atrx_Sniper"] = {
         }
     },
     Pets = {
-        ["Speed"] = {
+        ["Coins"] = {
             MAX_PRICE = 2000,
             FORM = "Normal", -- Normal, Rainbow, Golden
-            NAME_MATCHING = false -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
+            NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
         }
     },
 }
@@ -19,9 +35,6 @@ getgenv()["atrx_Sniper"] = {
 local Plaza = getsenv(game.Players.LocalPlayer.PlayerScripts:WaitForChild("Scripts"):WaitForChild("Game"):WaitForChild("Trading Plaza"):WaitForChild("Booths Frontend"))
 local Save = require(game.ReplicatedStorage.Library.Client.Save).Get()
 local _oldFunction = clonefunction(Plaza.updateBooth)
-local Url = "https://discord.com/api/webhooks/1123339315729137695/olW-SCs_ms2MuNkvYW8iXEPWg9JvgX2V9F6afdgdMUhIiB9BzBSaa_2_wpRz24-8_o4I"
-local httpRequest = (syn and syn.request) or http and http.request or http_request or (fluxus and fluxus.request) or request
-local webhookUrl = "https://discordapp.com/api/webhooks/1184264343806812260/_Bo64i3npoRy8rrMABGJ55-rFMy9PxQRJVzVIK-elZqXQqFU7L6bg5riz89Zu3xdNePs" -- Replace with your new webhook URL
 local GetDiamonds = function()
     for _, v in pairs(Save.Inventory.Currency) do 
         if v.id == 'Diamonds' then 
@@ -30,31 +43,7 @@ local GetDiamonds = function()
     end
 end
 local Notify = function(PET_DATA)
-    local data = {
-        ["content"] = atrx_Sniper.Configuration.Webhook.Content,
-        ["embeds"] = {
-            {
-                ["title"] = string.format("Bought %s for %s - %s Gem", PET_DATA.COUNT, PET_DATA.NAME, PET_DATA.PRICE, (math.round((PET_DATA.MAX_PRICE / PET_DATA.PRICE) * 100).."%")),
-                ["description"] = string.format("**> Transaction Details <**\n**Pet Name: %s**\n**Bought by: %s (%s)**\n**Bought from %s (%s)**\n**>Total <**\n**Price: %s**\n**Max Price: %s**\n**Profit (percent): %s**\n**Gem Balance: %s**", PET_DATA.NAME, game.Players.LocalPlayer.Name, game.Players.LocalPlayer.UserId, game.Players:GetPlayerByUserId(PET_DATA.PLAYER_ID).Name, PET_DATA.PLAYER_ID, PET_DATA.PRICE, PET_DATA.MAX_PRICE, (math.round((PET_DATA.MAX_PRICE / PET_DATA.PRICE) * 100).."%"), GetDiamonds()) ,
-                ["color"] = 3929344,
-                ["author"] = {
-                    ["name"] = "ATRX SNIPER"
-                },
-                ["footer"] = {
-                    ["text"] = "ATRX SNIPER"
-                },
-                ["timestamp"] = "2023-12-13T23:00:00.000Z";
-            }
-        }
-    }
-local response = httpRequest({
-    Url = webhookUrl,
-    Method = "POST",
-    Headers = {
-        ["Content-Type"] = "application/json"
-    },
-    Body = game:GetService("HttpService"):JSONEncode(data)
-})
+   print("piM")
 end
 local GetPetForm = function(Data)
     return (Data.pt == nil) and 'Normal' or (Data.pt == 1) and 'Golden' or (Data.pt == 2) and 'Rainbow'
