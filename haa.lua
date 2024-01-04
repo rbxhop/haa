@@ -8,12 +8,7 @@ getgenv()["atrx_Sniper"] = {
     },
     Pets = {
         ["TNT Crate"] = {
-            MAX_PRICE = 3000,
-            FORM = "Normal", -- Normal, Rainbow, Golden
-            NAME_MATCHING = false -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
-        },
-		 ["TNT"] = {
-            MAX_PRICE = 100,
+            MAX_PRICE = 1000,
             FORM = "Normal", -- Normal, Rainbow, Golden
             NAME_MATCHING = false -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
         },
@@ -35,7 +30,7 @@ getgenv()["atrx_Sniper"] = {
     
 	},
 		["Spinny Wheel Ticket"] = {
-            MAX_PRICE = 8000,
+            MAX_PRICE = 1000,
             FORM = "Normal", -- Normal, Rainbow, Golden
             NAME_MATCHING = false -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
     
@@ -66,7 +61,7 @@ getgenv()["atrx_Sniper"] = {
 	},
 
 		    ["Voucher"] = {
-            MAX_PRICE = 30000,
+            MAX_PRICE = 20000,
             FORM = "Normal", -- Normal, Rainbow, Golden
             NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
     
