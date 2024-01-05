@@ -226,6 +226,7 @@ end
 end
     _oldFunction(...)
 end
+end
 	else
 	wait(15)
 	game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Travel to Trading Plaza"):InvokeServer(15502339080)
