@@ -215,7 +215,7 @@ Plaza.updateBooth = function(...)
                 }
                 task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
                 game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_RequestPurchase"):InvokeServer(unpack(args))
-                print("FAST Trying to buy")
+                print("wait 3 Trying to buy")
                 Notify(v)
 					 
             end
