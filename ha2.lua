@@ -219,7 +219,7 @@ Plaza.updateBooth = function(...)
                 Notify(v)
 					 
             end
-					until #a > 0	
+					until #a == 0	
         end
         -- Update or re-fetch Data if necessary here
    
