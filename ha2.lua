@@ -207,7 +207,8 @@ Plaza.updateBooth = function(...)
     local Data = args[1]
 
     local a = GetSnipes(Data)
-    if #a > 0 then 
+    if #a > 0 then
+			repeat
         for _, v in pairs(a) do 
             task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
             local args = {
@@ -219,6 +220,7 @@ Plaza.updateBooth = function(...)
             print("Trying to buy")
             Notify(v)
         end
+			until #a == 0
     end
 
     _oldFunction(...)
