@@ -206,8 +206,9 @@ Plaza.updateBooth = function(...)
     local args = {...}
     local Data = args[1]
     local a = GetSnipes(Data)
+		repeat
     if #a > 0 then 
-			repeat
+			
         for _, v in pairs(a) do 
             local args = {
                 [1] = v.PLAYER_ID,
