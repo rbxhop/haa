@@ -1,6 +1,6 @@
 getgenv()["atrx_Sniper"] = {
     Configuration = {
-        Buy_Delay_MS = 3350,
+        Buy_Delay_MS = 3400,
         Webhook = {
             Url = "https://discord.com/api/webhooks/1123339315729137695/olW-SCs_ms2MuNkvYW8iXEPWg9JvgX2V9F6afdgdMUhIiB9BzBSaa_2_wpRz24-8_o4I",
             Content = "@everyone";
@@ -205,27 +205,22 @@ end
 Plaza.updateBooth = function(...)
     local args = {...}
     local Data = args[1]
-    
-    repeat
-        local a = GetSnipes(Data)  -- Move the 'GetSnipes' call inside the loop
-        if #a > 0 then 
-            for _, v in pairs(a) do 
-                local invokeArgs = {
-                    [1] = v.PLAYER_ID,
-                    [2] = tostring(v.UID)
-                }
-                -- Uncomment the line below if you need a delay between requests
-                -- task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
-                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_RequestPurchase"):InvokeServer(unpack(invokeArgs))
-            end
+    local a = GetSnipes(Data)
+    if #a > 0 then 
+			repeat
+        for _, v in pairs(a) do 
+            local args = {
+                [1] = v.PLAYER_ID,
+                [2] = tostring(v.UID)
+            }
+            task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
+	    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_RequestPurchase"):InvokeServer(unpack(args))
+            print("Trying to buy")
+            Notify(v)
+					until #a == 0
         end
-        -- Optional delay to prevent rapid loop execution - adjust as needed
-        task.wait(0.1)  -- Waits for 0.1 seconds before checking again
-    until #a == 0  -- Repeat until 'a' is empty
-end
-end
+    end
     _oldFunction(...)
-end
 end
 	else
 	wait(15)
