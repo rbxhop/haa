@@ -1,6 +1,6 @@
 getgenv()["atrx_Sniper"] = {
     Configuration = {
-        Buy_Delay_MS = 5,
+        Buy_Delay_MS = 3320,
         Webhook = {
             Url = "https://discord.com/api/webhooks/1123339315729137695/olW-SCs_ms2MuNkvYW8iXEPWg9JvgX2V9F6afdgdMUhIiB9BzBSaa_2_wpRz24-8_o4I",
             Content = "@everyone";
