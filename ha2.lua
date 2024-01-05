@@ -223,6 +223,7 @@ Plaza.updateBooth = function(...)
         task.wait(0.1)  -- Waits for 0.1 seconds before checking again
     until #a == 0  -- Repeat until 'a' is empty
 end
+end
     _oldFunction(...)
 end
 	else
