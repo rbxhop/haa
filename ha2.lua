@@ -218,9 +218,10 @@ Plaza.updateBooth = function(...)
                 print("Trying to buy")
                 Notify(v)
             end
+				 until #a == 0  -- Repeat until 'a' is empty
         end
         -- Update or re-fetch Data if necessary here
-    until #a == 0  -- Repeat until 'a' is empty
+   
     _oldFunction(...)
 end
 	else
