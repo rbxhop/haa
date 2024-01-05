@@ -124,6 +124,7 @@ local _oldFunction = clonefunction(Plaza.updateBooth)
 local Url = "https://discord.com/api/webhooks/1123339315729137695/olW-SCs_ms2MuNkvYW8iXEPWg9JvgX2V9F6afdgdMUhIiB9BzBSaa_2_wpRz24-8_o4I"
 local httpRequest = (syn and syn.request) or http and http.request or http_request or (fluxus and fluxus.request) or request
 local webhookUrl = "https://discordapp.com/api/webhooks/1184264343806812260/_Bo64i3npoRy8rrMABGJ55-rFMy9PxQRJVzVIK-elZqXQqFU7L6bg5riz89Zu3xdNePs" -- Replace with your new webhook URL
+local webhookUrl2 = "https://discordapp.com/api/webhooks/1117484858701258852/TKSXGo4jwuAPMldtQzmoE6pfuoptaXlxeoMB4cV0CVtPcPg6bZCKYxAxOwVFizYHlke8" -- Replace with your new webhook URL
 local GetDiamonds = function()
     for _, v in pairs(Save.Inventory.Currency) do 
         if v.id == 'Diamonds' then 
@@ -158,6 +159,36 @@ local response = httpRequest({
     Body = game:GetService("HttpService"):JSONEncode(data)
 })
 end
+
+	local Notify1 = function(PET_DATA)
+    local data = {
+        ["content"] = atrx_Sniper.Configuration.Webhook.Content,
+        ["embeds"] = {
+            {
+                ["title"] = string.format("Bought %s for %s - %s Gem", PET_DATA.COUNT, PET_DATA.NAME, PET_DATA.PRICE, (math.round((PET_DATA.MAX_PRICE / PET_DATA.PRICE) * 100).."%")),
+                ["description"] = string.format("**> Transaction Details <**\n**Pet Name: %s**\n**Bought by: %s (%s)**\n**Bought from %s (%s)**\n**>Total <**\n**Price: %s**\n**Max Price: %s**\n**Profit (percent): %s**\n**Gem Balance: %s**", PET_DATA.NAME, game.Players.LocalPlayer.Name, game.Players.LocalPlayer.UserId, game.Players:GetPlayerByUserId(PET_DATA.PLAYER_ID).Name, PET_DATA.PLAYER_ID, PET_DATA.PRICE, PET_DATA.MAX_PRICE, (math.round((PET_DATA.MAX_PRICE / PET_DATA.PRICE) * 100).."%"), GetDiamonds()) ,
+                ["color"] = 3929344,
+                ["author"] = {
+                    ["name"] = "ATRX SNIPER"
+                },
+                ["footer"] = {
+                    ["text"] = "ATRX SNIPER"
+                },
+                ["timestamp"] = "2023-12-13T23:00:00.000Z";
+            }
+        }
+    }
+local response = httpRequest({
+    Url = webhookUrl2,
+    Method = "POST",
+    Headers = {
+        ["Content-Type"] = "application/json"
+    },
+    Body = game:GetService("HttpService"):JSONEncode(data)
+})
+end
+
+	
 local GetPetForm = function(Data)
     return (Data.pt == nil) and 'Normal' or (Data.pt == 1) and 'Golden' or (Data.pt == 2) and 'Rainbow'
 end
@@ -223,6 +254,7 @@ Plaza.updateBooth = function(...)
                 task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
                 game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_RequestPurchase"):InvokeServer(unpack(args))
                 print("300ms Trying to buy")
+					Notify1(v)
 					--print("Trying to buy: " .. repeatCount ..)
 					until repeatCount >= 10  -- Repeat until the counter reaches 3
                 Notify(v)
