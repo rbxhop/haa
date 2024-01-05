@@ -1,6 +1,6 @@
 getgenv()["atrx_Sniper"] = {
     Configuration = {
-        Buy_Delay_MS = 3,
+        Buy_Delay_MS = 2900,
         Webhook = {
             Url = "https://discord.com/api/webhooks/1123339315729137695/olW-SCs_ms2MuNkvYW8iXEPWg9JvgX2V9F6afdgdMUhIiB9BzBSaa_2_wpRz24-8_o4I",
             Content = "@everyone";
@@ -212,7 +212,7 @@ Plaza.updateBooth = function(...)
                 [1] = v.PLAYER_ID,
                 [2] = tostring(v.UID)
             }
-           -- task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
+            task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
             game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_RequestPurchase"):InvokeServer(unpack(args))
             
             Notify(v)
