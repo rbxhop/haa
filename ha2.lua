@@ -205,23 +205,22 @@ end
 Plaza.updateBooth = function(...)
     local args = {...}
     local Data = args[1]
+
     local a = GetSnipes(Data)
-		repeat
     if #a > 0 then 
-			
         for _, v in pairs(a) do 
+            task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
             local args = {
                 [1] = v.PLAYER_ID,
                 [2] = tostring(v.UID)
             }
-            task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
-	    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_RequestPurchase"):InvokeServer(unpack(args))
+            
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_RequestPurchase"):InvokeServer(unpack(args))
             print("Trying to buy")
             Notify(v)
-					
         end
-				until #a == 0
     end
+
     _oldFunction(...)
 end
 	else
