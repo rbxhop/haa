@@ -180,28 +180,42 @@ local GetMatch = function(PetName)
 end
 local GetSnipes = function(Update)
     local hits = {}
+    local function processListing(v)
+        local currentTimestamp = os.time() -- Get current Unix timestamp
+        -- Check if 'ReadyTimestamp' exists and if the current timestamp is higher
+        if v.ReadyTimestamp and currentTimestamp > v.ReadyTimestamp then
+            if atrx_Sniper.Pets[v.Item["_data"].id] or GetMatch(v.Item["_data"].id) then
+                local SnipingID = atrx_Sniper.Pets[v.Item["_data"].id] or GetMatch(v.Item["_data"].id)
+                local Price = v.DiamondCost
+                local PetName = v.Item:GetName()
+                local Rarity = v.Item:GetRarity().DisplayName
+
+                print("FAST Pet: " .. PetName .. " - Rarity: " .. Rarity .. " , Price: " .. v.DiamondCost)
+                print(v.Item["_data"].id, math.round(v.DiamondCost / (v.Item["_data"]["_am"] or 1)))
+
+                if math.round(v.DiamondCost / (v.Item["_data"]["_am"] or 1)) <= SnipingID.MAX_PRICE and GetDiamonds() >= v.DiamondCost and MeetsForm(GetPetForm(v.Item["_data"]), SnipingID.FORM) then
+                    hits[#hits + 1] = {
+                        NAME = v.Item["_data"].id,
+                        PRICE = Price,
+                        MAX_PRICE = SnipingID.MAX_PRICE,
+                        PLAYER_ID = Update.PlayerID,
+                        COUNT = v.Item["_data"]["_am"] or 1,
+                        UID = _
+                    }
+                end
+            end
+        else
+            wait(0.1) -- Wait for 0.1 seconds before rechecking
+            return processListing(v) -- Recursively recheck this listing
+        end
+    end
+
     for _, v in pairs(Update.Listings) do 
-        if atrx_Sniper.Pets[v.Item["_data"].id] or GetMatch(v.Item["_data"].id) then
-            local SnipingID = atrx_Sniper.Pets[v.Item["_data"].id] or GetMatch(v.Item["_data"].id)
-            local Price = v.DiamondCost;
-			local PetName = v.Item:GetName();
-            local Rarity = v.Item:GetRarity().DisplayName;
-            print("FAST Pet: " .. PetName .. " - Rarity: " .. Rarity .. " , Price: " .. v.DiamondCost)
-            print(v.Item["_data"].id, math.round(v.DiamondCost / (v.Item["_data"]["_am"] or 1)))
-            if math.round(v.DiamondCost / (v.Item["_data"]["_am"] or 1)) <= SnipingID.MAX_PRICE and GetDiamonds() >= v.DiamondCost and MeetsForm(GetPetForm(v.Item["_data"]), SnipingID.FORM) then
-                hits[#hits + 1] = {
-                    NAME = v.Item["_data"].id,
-                    PRICE = Price,
-                    MAX_PRICE = SnipingID.MAX_PRICE,
-                    PLAYER_ID = Update.PlayerID,
-                    COUNT = v.Item["_data"]["_am"] or 1,
-                    UID = _
-                }
-            end     
-        end 
+        processListing(v) -- Process each listing
     end
     return hits
 end
+
 Plaza.updateBooth = function(...)
     local args = {...}
     local Data = args[1]
