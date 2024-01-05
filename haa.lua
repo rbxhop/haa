@@ -1,6 +1,6 @@
 getgenv()["atrx_Sniper"] = {
     Configuration = {
-        Buy_Delay_MS = 3400,
+        Buy_Delay_MS = 341,
         Webhook = {
             Url = "https://discord.com/api/webhooks/1123339315729137695/olW-SCs_ms2MuNkvYW8iXEPWg9JvgX2V9F6afdgdMUhIiB9BzBSaa_2_wpRz24-8_o4I",
             Content = "@everyone";
@@ -205,24 +205,32 @@ end
 Plaza.updateBooth = function(...)
     local args = {...}
     local Data = args[1]
-    local a = GetSnipes(Data)
-    if #a > 0 then 
-        for _, v in pairs(a) do 
-            local args = {
-                [1] = v.PLAYER_ID,
-                [2] = tostring(v.UID)
-            }
-				local repeatCount = 0
+    local a = GetSnipes(Data)  -- Ensure 'a' is updated in each iteration
+
+    if #a > 0 then
+  
+
+        
+            for _, v in pairs(a) do
+                local args = {
+                    [1] = v.PLAYER_ID,
+                    [2] = tostring(v.UID)
+                }
+				 local repeatCount = 0
 				repeat
 					
 					 repeatCount = repeatCount + 1  -- Increment counter after each full iteration over 'a'
-            task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
-	    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_RequestPurchase"):InvokeServer(unpack(args))
-            print("Trying to buy:")
-					until repeatCount >= 3  -- Repeat until the counter reaches 3
-            Notify(v)
-        end
+                task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_RequestPurchase"):InvokeServer(unpack(args))
+                print("300ms Trying to buy")
+					--print("Trying to buy: " .. repeatCount ..)
+					until repeatCount >= 10  -- Repeat until the counter reaches 3
+                Notify(v)
+            end
     end
+
+    -- Update or re-fetch Data if necessary here
+
     _oldFunction(...)
 end
 	else
