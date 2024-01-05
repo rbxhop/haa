@@ -224,7 +224,6 @@ Plaza.updateBooth = function(...)
     until #a == 0  -- Repeat until 'a' is empty
 end
 end
-end
     _oldFunction(...)
 end
 	else
