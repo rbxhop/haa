@@ -218,9 +218,10 @@ Plaza.updateBooth = function(...)
             
             game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_RequestPurchase"):InvokeServer(unpack(args))
             print("Trying to buy")
+					until #a == 0
             Notify(v)
         end
-			until #a > 0
+			
     end
 
     _oldFunction(...)
