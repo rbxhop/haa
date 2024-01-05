@@ -212,7 +212,7 @@ Plaza.updateBooth = function(...)
                 [1] = v.PLAYER_ID,
                 [2] = tostring(v.UID)
             }
-            task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
+            --task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
 	    game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_RequestPurchase"):InvokeServer(unpack(args))
             
             Notify(v)
