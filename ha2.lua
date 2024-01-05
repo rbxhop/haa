@@ -183,8 +183,9 @@ local GetSnipes = function(Update)
     local function processListing(v)
         local currentTimestamp = os.time() -- Get current Unix timestamp
         -- Check if 'ReadyTimestamp' exists and if the current timestamp is higher
-        if v.ReadyTimestamp and currentTimestamp > v.ReadyTimestamp then
+        
             if atrx_Sniper.Pets[v.Item["_data"].id] or GetMatch(v.Item["_data"].id) then
+		if v.ReadyTimestamp and currentTimestamp > v.ReadyTimestamp then
                 local SnipingID = atrx_Sniper.Pets[v.Item["_data"].id] or GetMatch(v.Item["_data"].id)
                 local Price = v.DiamondCost
                 local PetName = v.Item:GetName()
@@ -205,10 +206,11 @@ local GetSnipes = function(Update)
                 end
             end
         else
-            wait(0.1) -- Wait for 0.1 seconds before rechecking
-            return processListing(v) -- Recursively recheck this listing
+                task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)            
+	return processListing(v) -- Recursively recheck this listing
         end
     end
+		
 
     for _, v in pairs(Update.Listings) do 
         processListing(v) -- Process each listing
