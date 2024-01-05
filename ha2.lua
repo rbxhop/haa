@@ -206,8 +206,8 @@ Plaza.updateBooth = function(...)
     local args = {...}
     local Data = args[1]
         local a = GetSnipes(Data)  -- Ensure 'a' is updated in each iteration
-		repeat
-        if #a > 0 then
+				if #a > 0 then
+			repeat
             for _, v in pairs(a) do
                 local args = {
                     [1] = v.PLAYER_ID,
@@ -219,7 +219,7 @@ Plaza.updateBooth = function(...)
                 Notify(v)
 					 
             end
-		until #a == 0  -- Repeat until 'a' is empty		
+					until #a > 0	
         end
         -- Update or re-fetch Data if necessary here
    
