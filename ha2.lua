@@ -208,25 +208,24 @@ Plaza.updateBooth = function(...)
     local a = GetSnipes(Data)  -- Ensure 'a' is updated in each iteration
 
     if #a > 0 then
-        local repeatCount = 0  -- Counter to track iterations
+  
 
-        repeat
+        
             for _, v in pairs(a) do
                 local args = {
                     [1] = v.PLAYER_ID,
                     [2] = tostring(v.UID)
                 }
+				 local repeatCount = 0
+				repeat
+					
+					 repeatCount = repeatCount + 1  -- Increment counter after each full iteration over 'a'
                 task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
                 game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_RequestPurchase"):InvokeServer(unpack(args))
                 print("wait 3 Trying to buy")
+					until repeatCount >= 3  -- Repeat until the counter reaches 3
                 Notify(v)
             end
-
-            repeatCount = repeatCount + 1  -- Increment counter after each full iteration over 'a'
-            if repeatCount < 3 then
-                a = GetSnipes(Data)  -- Re-fetch 'a' only if another iteration is required
-            end
-        until repeatCount >= 3  -- Repeat until the counter reaches 3
     end
 
     -- Update or re-fetch Data if necessary here
