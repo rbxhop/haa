@@ -230,15 +230,11 @@ Plaza.updateBooth = function(...)
                     [1] = v.PLAYER_ID,
                     [2] = tostring(v.UID)
                 }
-				 local repeatCount = 0
-				repeat
+	
 					
-					 repeatCount = repeatCount + 1  -- Increment counter after each full iteration over 'a'
-                task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
                 game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_RequestPurchase"):InvokeServer(unpack(args))
-                print("300ms Trying to buy")
-					--print("Trying to buy: " .. repeatCount ..)
-					until repeatCount >= 10  -- Repeat until the counter reaches 3
+                print("123 Trying to buy")
+					
                 Notify(v)
             end
     end
