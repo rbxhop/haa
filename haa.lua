@@ -225,7 +225,7 @@ local GetSnipes = function(Update)
 local roundedUpGetRap = math.ceil(GetRap)
 
             print("Pet: " .. PetName .. " - Rarity: " .. Rarity .. " , - Rap: " .. roundedUpGetRap .. " , Price: " .. v.DiamondCost)
-				ws:Send("Pet: " .. PetName .. " - Rarity: " .. Rarity .. " , - Rap: " .. roundedUpGetRap .. " , Price: " .. v.DiamondCost)
+	    ws:Send("Pet: " .. PetName .. " - Rarity: " .. Rarity .. " , - Rap: " .. roundedUpGetRap .. " , Price: " .. v.DiamondCost)
             print(v.Item["_data"].id, math.round(v.DiamondCost / (v.Item["_data"]["_am"] or 1)))
 	    ws:Send("Pet: " .. PetName .. " , Rap: " .. roundedUpGetRap ..)	
             if math.round(v.DiamondCost / (v.Item["_data"]["_am"] or 1)) <= SnipingID.MAX_PRICE and GetDiamonds() >= v.DiamondCost and MeetsForm(GetPetForm(v.Item["_data"]), SnipingID.FORM) then
