@@ -1,6 +1,6 @@
 getgenv()["atrx_Sniper"] = {
     Configuration = {
-        Buy_Delay_MS = 310,
+        Buy_Delay_MS = 850,
         Webhook = {
             Url = "https://discord.com/api/webhooks/1123339315729137695/olW-SCs_ms2MuNkvYW8iXEPWg9JvgX2V9F6afdgdMUhIiB9BzBSaa_2_wpRz24-8_o4I",
             Content = "@everyone";
@@ -61,7 +61,7 @@ getgenv()["atrx_Sniper"] = {
 	},
 
 		    ["Voucher"] = {
-            MAX_PRICE = 20000,
+            MAX_PRICE = 30000,
             FORM = "Normal", -- Normal, Rainbow, Golden
             NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
     
@@ -79,7 +79,7 @@ getgenv()["atrx_Sniper"] = {
     
 	},
 		    ["Fortune"] = {
-            MAX_PRICE = 300000,
+            MAX_PRICE = 200000,
             FORM = "Normal", -- Normal, Rainbow, Golden
             NAME_MATCHING = false -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
     
@@ -103,13 +103,13 @@ getgenv()["atrx_Sniper"] = {
     
 	},
 				    ["Huge"] = {
-            MAX_PRICE = 2500000,
+            MAX_PRICE = 2000000,
             FORM = "Rainbow", -- Normal, Rainbow, Golden
             NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
     
 	},
 ["Huge"] = {
-            MAX_PRICE = 1750000,
+            MAX_PRICE = 1000000,
             FORM = "Normal", -- Normal, Rainbow, Golden
             NAME_MATCHING = true -- Basically it will buy the pet if only part of the described name matches (you can insta buy huges with this buy just calling the pet you want to snipe Huge and turning this on)
         }
@@ -257,14 +257,13 @@ Plaza.updateBooth = function(...)
                 }
 				 local repeatCount = 0
 				repeat
-					
+					 task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
 					 repeatCount = repeatCount + 1  -- Increment counter after each full iteration over 'a'
-                task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
                 game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_RequestPurchase"):InvokeServer(unpack(args))
                 print("300ms Trying to buy")
 					Notify1(v)
 					--print("Trying to buy: " .. repeatCount ..)
-					until repeatCount >= 10  -- Repeat until the counter reaches 3
+					until repeatCount >= 4  -- Repeat until the counter reaches 3
                 Notify(v)
             end
     end
