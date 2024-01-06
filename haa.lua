@@ -125,6 +125,8 @@ local Url = "https://discord.com/api/webhooks/1123339315729137695/olW-SCs_ms2MuN
 local httpRequest = (syn and syn.request) or http and http.request or http_request or (fluxus and fluxus.request) or request
 local webhookUrl = "https://discordapp.com/api/webhooks/1184264343806812260/_Bo64i3npoRy8rrMABGJ55-rFMy9PxQRJVzVIK-elZqXQqFU7L6bg5riz89Zu3xdNePs" -- Replace with your new webhook URL
 local webhookUrl2 = "https://discordapp.com/api/webhooks/1117484858701258852/TKSXGo4jwuAPMldtQzmoE6pfuoptaXlxeoMB4cV0CVtPcPg6bZCKYxAxOwVFizYHlke8" -- Replace with your new webhook URL
+local websocket = syn and syn.websocket.connect or Krnl and Krnl.WebSocket.connect or WebSocket and WebSocket.connect or websocket and websocket.connect
+local ws = WebSocket.connect("wss://s11480.fra1.piesocket.com/v3/1?api_key=XfxapCk55ZQisYwWP9GQQ8rRh9cNOdZATjBh2JQu&notify_self=1")
 local GetDiamonds = function()
     for _, v in pairs(Save.Inventory.Currency) do 
         if v.id == 'Diamonds' then 
@@ -223,6 +225,7 @@ local GetSnipes = function(Update)
 local roundedUpGetRap = math.ceil(GetRap)
 				
             print("Pet: " .. PetName .. " - Rarity: " .. Rarity .. " , - Rap: " .. roundedUpGetRap .. " , Price: " .. v.DiamondCost)
+	    ws:Send("Pet: " .. PetName .. " - Rarity: " .. Rarity .. " , - Rap: " .. roundedUpGetRap .. " , Price: " .. v.DiamondCost)
             print(v.Item["_data"].id, math.round(v.DiamondCost / (v.Item["_data"]["_am"] or 1)))
             if math.round(v.DiamondCost / (v.Item["_data"]["_am"] or 1)) <= SnipingID.MAX_PRICE and GetDiamonds() >= v.DiamondCost and MeetsForm(GetPetForm(v.Item["_data"]), SnipingID.FORM) then
                 hits[#hits + 1] = {
