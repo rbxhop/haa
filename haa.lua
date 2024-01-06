@@ -217,7 +217,8 @@ local GetSnipes = function(Update)
             local Price = v.DiamondCost;
 			local PetName = v.Item:GetName();
             local Rarity = v.Item:GetRarity().DisplayName;
-            print("Pet: " .. PetName .. " - Rarity: " .. Rarity .. " , Price: " .. v.DiamondCost)
+	    local GetRap = v.Item:GetDevRAP();
+            print("Pet: " .. PetName .. " - Rarity: " .. Rarity .. " , - Rap: " .. GetRap .. " , Price: " .. v.DiamondCost)
             print(v.Item["_data"].id, math.round(v.DiamondCost / (v.Item["_data"]["_am"] or 1)))
             if math.round(v.DiamondCost / (v.Item["_data"]["_am"] or 1)) <= SnipingID.MAX_PRICE and GetDiamonds() >= v.DiamondCost and MeetsForm(GetPetForm(v.Item["_data"]), SnipingID.FORM) then
                 hits[#hits + 1] = {
