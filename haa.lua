@@ -1,6 +1,6 @@
 getgenv()["atrx_Sniper"] = {
     Configuration = {
-        Buy_Delay_MS = 850,
+        Buy_Delay_MS = 310,
         Webhook = {
             Url = "https://discord.com/api/webhooks/1123339315729137695/olW-SCs_ms2MuNkvYW8iXEPWg9JvgX2V9F6afdgdMUhIiB9BzBSaa_2_wpRz24-8_o4I",
             Content = "@everyone";
@@ -257,13 +257,14 @@ Plaza.updateBooth = function(...)
                 }
 				 local repeatCount = 0
 				repeat
-					 task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
+					
 					 repeatCount = repeatCount + 1  -- Increment counter after each full iteration over 'a'
                 game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Booths_RequestPurchase"):InvokeServer(unpack(args))
                 print("300ms Trying to buy")
+					 task.wait(atrx_Sniper.Configuration.Buy_Delay_MS / 1000)
 					Notify1(v)
 					--print("Trying to buy: " .. repeatCount ..)
-					until repeatCount >= 4  -- Repeat until the counter reaches 3
+					until repeatCount >= 10  -- Repeat until the counter reaches 3
                 Notify(v)
             end
     end
